@@ -6,7 +6,10 @@
 		<h1>Missions</h1>
 			<ul>
 				@foreach($missions as $mission)
-					<li>{{ $mission->title }}</li>
+					<li>
+						<a href="{{ route('missions.show', $mission->id) }}"> {{ $mission->title }}</a>
+						- {{ $mission->user->name }}	
+					</li>
 				@endforeach
 			</ul>
 	</div>
