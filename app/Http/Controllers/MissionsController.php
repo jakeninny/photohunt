@@ -18,7 +18,7 @@ class MissionsController extends Controller
     public function index()
     {
         $missions = Mission::with('user')->get();
-        
+
         return view('missions.index', compact('missions'));
     }
 
@@ -29,7 +29,7 @@ class MissionsController extends Controller
      */
     public function create()
     {
-        //
+        return view('missions.create');
     }
 
     /**
@@ -40,7 +40,7 @@ class MissionsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        dd($request);
     }
 
     /**
