@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use App\Http\Requests\CreateMissionRequest;
 use App\Http\Controllers\Controller;
 use App\Mission;
 
@@ -29,7 +30,9 @@ class MissionsController extends Controller
      */
     public function create()
     {
-        return view('missions.create');
+        $mission = new Mission;
+
+        return view('missions.create', compact('mission'));
     }
 
     /**
@@ -38,9 +41,15 @@ class MissionsController extends Controller
      * @param  Request  $request
      * @return Response
      */
-    public function store(Request $request)
-    {
-        dd($request);
+    public function store(CreateMissionRequest $request)
+    {   
+
+        $mission = new Mission($request->all());
+        $mission->user_id = 1;
+        $mission->save();
+
+        return redirect()->route('missions.show', $mission->id)
+            ->with('status.success', 'Success! Your mission is now live!');
     }
 
     /**
