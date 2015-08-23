@@ -5,7 +5,7 @@
 <div class="container">
   <h1>Create New Mission</h1>
 	
-	{!! Form::open(['route' => 'missions.store', 'class' => 'form-horizontal']) !!}
+	{!! Form::open(['route' => 'missions.store', 'class' => 'form-horizontal', 'files' => true]) !!}
 	
 	@if(count($errors) > 0)
         <div class="alert alert-danger">There were problems with your form. Please fix them.</div>
@@ -23,6 +23,13 @@
         <div class="col-sm-10">
         	{!! Form::textarea('description', $mission->description, ['class' => 'form-control', 'rows' => '5']) !!}
         	@include('partials.error-help-block', ['field' => 'description'])
+        </div>
+  	</div>
+  	<div class="form-group {{ $errors->has('image') ? 'has-error text-danger' : '' }}">
+        <label for="image" class="col-sm-2 control-label">image</label>
+        <div class="col-sm-10">
+        	{!! Form::file('image', ['class' => 'form-control', 'rows' => '5']) !!}
+        	@include('partials.error-help-block', ['field' => 'image'])
         </div>
   	</div>
 	  <div class="form-group">
