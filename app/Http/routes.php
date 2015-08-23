@@ -13,6 +13,7 @@
 
 Route::get('/',        		  ['as' => 'home',      'uses' => 'PagesController@home']);
 Route::get('about',   		  ['as' => 'about',     'uses' => 'PagesController@about']);
-Route::get('about/contact',   ['as' => 'contact',	  'uses' => 'PagesController@contact']);
+Route::get('about/contact',   ['as' => 'contact',	'uses' => 'PagesController@contact']);
 
 Route::resource('missions', 'MissionsController');
+Route::resource('missions.attempts', 'AttemptsController', ['only' => ['store', 'update', 'edit', 'destroy']]);

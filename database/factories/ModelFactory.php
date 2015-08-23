@@ -28,3 +28,12 @@ $factory->define(App\Mission::class, function ($faker) {
         'image' => $faker->imageUrl(1000,1000)
     ];
 });
+
+$factory->define(App\Attempt::class, function ($faker) {
+    return [
+        'mission_id' => rand(1, 5),
+        'user_id' => rand(1, 5),
+        'image' => $faker->imageUrl(1170, 1170),
+        'status' => $faker->randomElement(['success', 'almost', 'miss', 'unchecked'])
+    ];
+});

@@ -3,3 +3,5 @@
 Homestead.yaml
 .env
 public/images/missions
+public/system/App/Attempt/images
+public/system/App/Mission/images

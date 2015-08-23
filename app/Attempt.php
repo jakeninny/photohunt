@@ -7,21 +7,22 @@ use Codesleeve\Stapler\ORM\StaplerableInterface;
 use Codesleeve\Stapler\ORM\EloquentTrait;
 
 
-class Mission extends Model implements StaplerableInterface
+class Attempt extends Model implements StaplerableInterface
 {
     use EloquentTrait;
 
-	protected $fillable = ['title', 'description', 'image'];
+	protected $fillable = ['mission_id', 'user_id', 'status', 'image'];
 
     function user()
     {
-        return $this->belongsTo('App\User', 'user_id');
+        return $this->belongsTo('App\User');
     }
 
-    public function attempts()
+    function mission()
     {
-        return $this->hasMany(Attempt::class);
+        return $this->belongsTo('App\Mission');
     }
+
 
     public function __construct(array $attributes = array()) {
         $this->hasAttachedFile('image', [
