@@ -21,7 +21,9 @@
           <img src="{{ $attempt->image->url('thumb') }}" alt="" class="img-rounded">
         </div>
       </div>
-
+      
+      @if(Auth::check() && (Auth::user()->id === $attempt->mission->user->id))
+     
       <div class="form-group {{ $errors->has('status') ? 'has-error text-danger' : '' }}">
         <label class="col-sm-2 control-label">Current Photo</label>
         <div class="col-sm-10">
@@ -42,6 +44,8 @@
           @include('partials.error-help-block', ['field' => 'status'])
         </div>
       </div>
+      
+      @endif
 
       <div class="form-group">
         <div class="col-sm-offset-2 col-sm-10">
