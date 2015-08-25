@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Requests\CreateMissionRequest;
+use App\Http\Requests\UpdateMissionRequest;
 use App\Http\Controllers\Controller;
 use App\Mission;
 
@@ -73,7 +74,9 @@ class MissionsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $mission = Mission::find($id);
+
+        return view('missions.edit', compact('mission'));
     }
 
     /**
@@ -83,9 +86,14 @@ class MissionsController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateMissionRequest $request, $id)
     {
-        //
+        $mission = Mission::findOrFail($id);
+        $mission->fill($request->all());
+        $mission->save();
+
+        return redirect()->route('missions.show', $id)
+            ->with('status.success', 'Success! Your mission is now updated!');
     }
 
     /**
