@@ -10,7 +10,10 @@
   margin: 0 auto;
 }
 
-
+.form-group.required .control-label:after { 
+   content:"*";
+   color:red;
+}
 
 
 

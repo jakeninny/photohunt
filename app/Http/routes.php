@@ -18,6 +18,9 @@ Route::get('about/contact',   ['as' => 'contact',	'uses' => 'PagesController@con
 Route::resource('missions', 'MissionsController');
 Route::resource('missions.attempts', 'AttemptsController', ['only' => ['store', 'update', 'edit', 'destroy']]);
 
+Route::get('profile', 		  ['as' => 'profile.edit', 'uses' => 'ProfileController@edit']);
+Route::put('profile', 		  ['as' => 'profile.update', 'uses' => 'ProfileController@update']);
+
 // Authentication routes...
 Route::get('auth/login',        ['as' => 'auth.login',      'uses' => 'Auth\AuthController@getLogin']);
 Route::post('auth/login',       ['as' => 'auth.accept',     'uses' => 'Auth\AuthController@postLogin']);

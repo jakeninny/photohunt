@@ -2,9 +2,10 @@
 
 namespace App\Http\Requests;
 
+use Auth;
 use App\Http\Requests\Request;
 
-class UpdateMissionRequest extends Request
+class UpdateProfileRequest extends Request
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -13,7 +14,7 @@ class UpdateMissionRequest extends Request
      */
     public function authorize()
     {
-        return true;
+        return Auth::check();
     }
 
     /**
@@ -24,9 +25,9 @@ class UpdateMissionRequest extends Request
     public function rules()
     {
         return [
-            'title' => ['required', 'max:255', 'min:3'],
-            'description' => ['required', 'min:10'],
-            'image' => ['image', 'max:2000'],
+            'name' => 'required|max:255',
+            'email' => 'required|email|max:255|unique:users,email,' . Auth::user()->id,
+            'password' => 'confirmed|min:6',
         ];
     }
 }
