@@ -23,7 +23,7 @@
 	      <span class="glyphicon glyphicon-pencil"></span> Edit Mission</a></p>
 	    @endif
 
-	    <h2>Attempts</h2>
+	    <h2>Attempts – {{ $successTally }} success from {{ $attemptTally }} attempts</h2>
 	    <div class="container">
 	    @foreach($attempts as $attempt)
 	      @if(Auth::check() && (Auth::user()->id === $mission->user->id || Auth::user()->id === $attempt->user->id))
