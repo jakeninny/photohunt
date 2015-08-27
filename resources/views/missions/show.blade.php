@@ -41,7 +41,7 @@
 
 	    <div class="container">
 	    @foreach($attempts as $attempt)
-	      @if(Auth::check() && (Auth::user()->id === $mission->user->id || Auth::user()->id === $attempt->user->id))=
+	      @if(Auth::check() && (Auth::user()->id === $mission->user->id || Auth::user()->id === $attempt->user->id))
 
         <div class="row">
           <div class="col-sm-2">
