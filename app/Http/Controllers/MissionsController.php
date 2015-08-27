@@ -9,6 +9,7 @@ use App\Http\Requests\CreateMissionRequest;
 use App\Http\Requests\UpdateMissionRequest;
 use App\Http\Controllers\Controller;
 use App\Mission;
+use DB;
 
 class MissionsController extends Controller
 {
@@ -72,7 +73,13 @@ class MissionsController extends Controller
         $attemptTally = count($attempts);
         $successTally = count($mission->attempts()->where('status', 'success')->get());
 
-        return view('missions.show', compact('mission', 'attempts', 'attemptTally', 'successTally'));
+        $missionSuccess = DB::select('select attempts.*, users.name 
+            FROM attempts 
+            JOIN users ON user_id=users.id 
+            where status = "success" AND mission_id = ?', [$mission->id]);
+
+
+        return view('missions.show', compact('mission', 'attempts', 'attemptTally', 'successTally', 'missionSuccess'));
     }
 
     /**

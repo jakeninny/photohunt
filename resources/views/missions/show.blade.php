@@ -24,9 +24,24 @@
 	    @endif
 
 	    <h2>Attempts – {{ $successTally }} success from {{ $attemptTally }} attempts</h2>
+
+	    <h3>Successful Users:</h3>
+			@if($missionSuccess)
+			<ul>
+				@foreach( $missionSuccess as $successfulUser )
+
+					<li><a href="/users/{{ $successfulUser->id }}">{{ $successfulUser->name }}</a></li>
+
+				@endforeach
+			</ul>
+			@else 
+				<p>No successful users founds</p>
+
+			@endif
+
 	    <div class="container">
 	    @foreach($attempts as $attempt)
-	      @if(Auth::check() && (Auth::user()->id === $mission->user->id || Auth::user()->id === $attempt->user->id))
+	      @if(Auth::check() && (Auth::user()->id === $mission->user->id || Auth::user()->id === $attempt->user->id))=
 
         <div class="row">
           <div class="col-sm-2">
@@ -50,6 +65,8 @@
               {!! Form::close() !!}
 
               @endif
+
+
             </p>
           </div>
         </div>
