@@ -13,6 +13,7 @@
 
 Route::get('/',        		  ['as' => 'home',      'uses' => 'PagesController@home']);
 Route::get('about',   		  ['as' => 'about',     'uses' => 'PagesController@about']);
+Route::get('leaderboard',     ['as' => 'leaderboard', 'uses' => 'PagesController@leaders']);
 Route::get('about/contact',   ['as' => 'contact',	'uses' => 'PagesController@contact']);
 
 Route::resource('missions', 'MissionsController');
@@ -29,6 +30,8 @@ Route::get('auth/logout',       ['as' => 'auth.logout',     'uses' => 'Auth\Auth
 // Registration routes...
 Route::get('auth/register',     ['as' => 'auth.register',   'uses' => 'Auth\AuthController@getRegister']);
 Route::post('auth/register',    ['as' => 'auth.store',     'uses' => 'Auth\AuthController@postRegister']);
+
+Route::get('auth/email-available', ['as' => 'auth.email-available', 'uses' => 'Auth\AuthController@getEmailAvailable']);
 
 // Password reset link request routes...
 Route::get('password/email',    ['as' => 'password.email',  'uses' => 'Auth\PasswordController@getEmail']);

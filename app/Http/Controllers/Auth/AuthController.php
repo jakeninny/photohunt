@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\User;
 use Validator;
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
@@ -62,6 +63,16 @@ class AuthController extends Controller
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
+        ]);
+    }
+
+    protected function getEmailAvailable(Request $request)
+    {
+        $user = User::where('email', $request->input('email'))->first();
+        return response()->json([
+            'success' => true,
+            'email' => $request->input('email'),
+            'available' => !(bool)$user,
         ]);
     }
 }

@@ -62,7 +62,7 @@ class AttemptsController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function update(UpdateAttemptRequest $request, $mission_id, $id)
+     public function update(UpdateAttemptRequest $request, $mission_id, $id)
     {
         $attempt = Attempt::findOrFail($id);
         if ($attempt->mission->user->id === $request->user()->id) {
@@ -72,8 +72,12 @@ class AttemptsController extends Controller
         }
         $attempt->save();
 
-        return redirect()->route('missions.show', $mission_id)
-            ->with('status.success', 'Success! Your attempt is now updated!');
+        if ($request->ajax()) {
+            return response()->json(['success' => true]);
+        } else {
+            return redirect()->route('missions.show', $mission_id)
+                ->with('status.success', 'Success! Your attempt is now updated!');
+        }
     }
 
     /**

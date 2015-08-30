@@ -24,7 +24,7 @@ class UpdateAttemptRequest extends Request
     public function rules()
     {
         return [
-            'image'  => ['required', 'image', 'max:2000'],
+            'image'  => ['image', 'max:2000'],
             'status' => ['in:success,almost,miss,unchecked']
         ];
     }
