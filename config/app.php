@@ -137,6 +137,8 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
 
+        Barryvdh\Debugbar\ServiceProvider::class,
+        
         /*
          * Application Service Providers...
          */
@@ -144,7 +146,6 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
-        Barryvdh\Debugbar\ServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
         Codesleeve\LaravelStapler\Providers\L5ServiceProvider::class,
 

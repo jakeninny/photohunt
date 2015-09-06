@@ -46,6 +46,7 @@
              <li class="{{ Route::currentRouteName() === 'leaderboard' ? 'active' : null }}"><a href="{{ route('leaderboard') }}">Leaderboard</a></li>
             <li class="{{ Route::currentRouteName() === 'about' ? 'active' : null }}"><a href="{{ route('about') }}">About</a></li>
             <li class="{{ Route::currentRouteName() === 'contact' ? 'active' : null }}"><a href="{{ route('contact') }}">Contact</a></li>
+            <li><a href="">WLG: {{ $weatherCondition }} {{ $weatherTemp }}°C</a></li>
           </ul>
 
          <ul class="nav navbar-nav navbar-right">
