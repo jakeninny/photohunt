@@ -12,17 +12,17 @@
         <meta name="csrf-token" content="{{ csrf_token() }}">
         <link rel="apple-touch-icon" href="apple-touch-icon.png">
 
-        <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
+        <link rel="stylesheet" href="{{ elixir('css/app.css') }}">
         <style>
             body {
                 padding-top: 70px;
                 padding-bottom: 20px;
             }
         </style>
-        <link rel="stylesheet" href="{{ asset('css/bootstrap-theme.min.css') }}">
-        <link rel="stylesheet" href="{{ asset('css/main.css') }}">
 
-        <script src="{{ asset('js/vendor/modernizr-2.8.3-respond-1.4.2.min.js') }}"></script>
+
+
+        
     </head>
     <body>
         <!--[if lt IE 8]>
@@ -76,12 +76,7 @@
     @yield('content')
 
 
-        <script src="{{ asset('//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js') }}"></script>
-        <script>window.jQuery || document.write('<script src="{{ asset('js/vendor/jquery-1.11.2.min.js') }}"><\/script>')</script>
-
-        <script src="{{ asset('js/vendor/bootstrap.min.js') }}"></script>
-
-        <script src="{{ asset('js/main.js') }}"></script>
+        <script src="{{ elixir('js/all.js') }}"></script>
 
         <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
         <script>
